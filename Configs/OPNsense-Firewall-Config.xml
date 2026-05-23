@@ -1,0 +1,125 @@
+<nat>
+    <outbound>
+      <mode>automatic</mode>
+    </outbound>
+    <rule uuid="cb2a1965-eaa7-4b3c-8840-3b4af589b712">
+      <sequence>200</sequence>
+      <disabled>0</disabled>
+      <nordr>0</nordr>
+      <interface>wan</interface>
+      <ipprotocol>inet</ipprotocol>
+      <protocol>tcp/udp</protocol>
+      <source>
+        <network/>
+        <port/>
+        <not>0</not>
+      </source>
+      <destination>
+        <network>wanip</network>
+        <port>8443</port>
+        <not>0</not>
+      </destination>
+      <target>10.10.10.151</target>
+      <local-port>https</local-port>
+      <poolopts/>
+      <log>1</log>
+      <category/>
+      <descr>Wazuh</descr>
+      <tag/>
+      <tagged/>
+      <nosync>0</nosync>
+      <natreflection/>
+      <pass/>
+      <associated-rule-id/>
+      <created>
+        <username>root</username>
+        <time>1779471951.97</time>
+        <description>/api/api.php made changes</description>
+      </created>
+      <updated>
+        <username>root</username>
+        <time>1779472331.63</time>
+        <description>/api/api.php made changes</description>
+      </updated>
+    </rule>
+  </nat>
+
+<rule uuid="b8491f5b-d3c7-4a4c-9b77-31a10b5f6456">
+      <type>pass</type>
+      <interface>wan</interface>
+      <ipprotocol>inet</ipprotocol>
+      <statetype>keep state</statetype>
+      <descr>For Web UI Connection</descr>
+      <direction>in</direction>
+      <disablereplyto>1</disablereplyto>
+      <log>1</log>
+      <quick>1</quick>
+      <protocol>tcp/udp</protocol>
+      <source>
+        <address>192.168.32.1/32</address>
+      </source>
+      <destination>
+        <network>wanip</network>
+      </destination>
+      <updated>
+        <username>root@192.168.32.1</username>
+        <time>1779471481.19</time>
+        <description>/firewall_rules_edit.php made changes</description>
+      </updated>
+      <created>
+        <username>root@192.168.32.1</username>
+        <time>1779465363.38</time>
+        <description>/firewall_rules_edit.php made changes</description>
+      </created>
+    </rule>
+    <rule uuid="972dbd4c-eb57-40ed-a7bc-062d04ab6448">
+      <type>pass</type>
+      <ipprotocol>inet</ipprotocol>
+      <descr>Default allow LAN to any rule</descr>
+      <interface>lan</interface>
+      <source>
+        <network>lan</network>
+      </source>
+      <destination>
+        <any/>
+      </destination>
+    </rule>
+    <rule uuid="659cf615-da56-4279-a433-bad03459c9a1">
+      <type>pass</type>
+      <ipprotocol>inet6</ipprotocol>
+      <descr>Default allow LAN IPv6 to any rule</descr>
+      <interface>lan</interface>
+      <source>
+        <network>lan</network>
+      </source>
+      <destination>
+        <any/>
+      </destination>
+    </rule>
+    <rule uuid="c5304916-0ac1-4c8e-9db2-5e3e34483234">
+      <type>pass</type>
+      <interface>opt1</interface>
+      <ipprotocol>inet</ipprotocol>
+      <statetype>keep state</statetype>
+      <descr>VLAN 20 all</descr>
+      <direction>in</direction>
+      <log>1</log>
+      <quick>1</quick>
+      <source>
+        <network>opt1</network>
+      </source>
+      <destination>
+        <any>1</any>
+      </destination>
+      <updated>
+        <username>root@192.168.32.1</username>
+        <time>1779523241.27</time>
+        <description>/firewall_rules_edit.php made changes</description>
+      </updated>
+      <created>
+        <username>root@192.168.32.1</username>
+        <time>1779487283.75</time>
+        <description>/firewall_rules_edit.php made changes</description>
+      </created>
+    </rule>
+
