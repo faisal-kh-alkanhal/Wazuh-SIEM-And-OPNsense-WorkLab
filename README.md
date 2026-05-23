@@ -32,34 +32,34 @@ Adversary Emulation | Red Canary's Atomic Red Team framework and custom commands
 The lab is divided into three isolated network zones using VMware LAN Segments, with OPNsense enforcing inter-zone traffic policy and acting as the default gateway for all routed subnets. This architecture mirrors a real enterprise environment where the SOC sits on a separate management plane from the assets it monitors.
 
 ```
-┌─────────────────────────────────────────────────────────────────┐
-│                        VMware Workstation                       │
-│                                                                 │
-│   ┌──────────────┐     ┌──────────────────┐                    │
-│   │  WAN Zone    │     │  OPNsense        │                    │
-│   │  VMware NAT  │────▶│  Firewall        │                    │
-│   │  192.168.x.x │     │  (Gateway +      │                    │
-│   └──────────────┘     │   IDS/IPS)       │                    │
-│                        └────────┬─────────┘                    │
-│                                 │                               │
-│              ┌──────────────────┴──────────────┐               │
-│              │                                 │               │
-│   ┌──────────▼──────────┐         ┌────────────▼────────────┐  │
-│   │  Security Ops Zone  │         │  Target Corporate Zone  │  │
+┌───────────────────────────────────────────────────────────────┐
+│                        VMware Workstation                     │
+│                                                               │
+│   ┌──────────────┐     ┌──────────────────┐                   │
+│   │  WAN Zone    │     │  OPNsense        │                   │
+│   │  VMware NAT  │────▶│  Firewall        │                   │
+│   │  192.168.x.x │     │  (Gateway +      │                   │
+│   └──────────────┘     │   IDS/IPS)       │                   │
+│                        └────────┬─────────┘                   │
+│                                 │                             │
+│              ┌──────────────────┴──────────────┐              │
+│              │                                 │              │
+│   ┌──────────▼──────────┐         ┌────────────▼───────────┐  │
+│   │  Security Ops Zone  │         │  Target Corporate Zone │  │
 │   │  LAN  10.10.10.0/24 │         │  OPT1  10.10.20.0/24   │  │
-│   │                     │         │                         │  │
+│   │                     │         │                        │  │
 │   │  ┌───────────────┐  │         │  ┌──────────────────┐  │  │
-│   │  │ Wazuh Server  │  │          │  │ Windows Server   │  │  │
-│   │  │ 10.10.10.151   │  │         │  │ (AD DC)          │  │  │
-│   │  └───────────────┘  │         │  │ 10.10.20.100      │  │  │
+│   │  │ Wazuh Server  │  │         │  │ Windows Server   │  │  │
+│   │  │ 10.10.10.151   │  │        │  │ (AD DC)          │  │  │
+│   │  └───────────────┘  │         │  │ 10.10.20.100     │  │  │
 │   │                     │         │  └──────────────────┘  │  │
 │   └─────────────────────┘         │  ┌──────────────────┐  │  │
-│                                   │  │ Windows 10/11    │  │  │
+│                                   │  │ Windows 11       │  │  │
 │                                   │  │ Enterprise Client│  │  │
 │                                   │  │ 10.10.20.150     │  │  │
 │                                   │  └──────────────────┘  │  │
-│                                   └─────────────────────────┘  │
-└─────────────────────────────────────────────────────────────────┘
+│                                   └────────────────────────┘  │
+└───────────────────────────────────────────────────────────────┘
 ```
 
 **Zone breakdown:**
